@@ -59,7 +59,7 @@ FROM (SELECT 'Kawish Siddiqui' myVal) a;
 SELECT aes_encrypt(myVal, myVal) enc_data, aes_decrypt(enc_data, myVal||'111')
 FROM (SELECT 'Kawish Siddiqui' myVal) a;
 ```
- *Above SQL should throw an error*
+ **Above SQL should throw an error**
 
 ### Check for error details if error occured
 ```SQL
