@@ -1,8 +1,8 @@
 -- Create library
 CREATE OR REPLACE LIBRARY pyaes 
 LANGUAGE plpythonu 
-FROM 's3://muhamsi-scripts/rs_encryption_udf/pyaes.zip' 
-CREDENTIALS 'aws_iam_role=arn:aws:iam::866075764043:role/RedshiftRole';
+FROM 'https://github.com/ksiddiqui79/redshift_udfs/blob/master/encrypt_decrypt_udf/pyaes.zip?raw=true' 
+;
 
 
 -- Create encrypt function
@@ -35,6 +35,12 @@ RETURNS VARCHAR STABLE AS $$
   return str(decrypted_msg2.decode('utf-8'))
 $$ LANGUAGE plpythonu ;
 
--- Test function
-
+-- Test function with same key for encrypt and decrypt
 select aes_encrypt('Kawish Siddiqui', 'abcdefghijklnosp') enc_data, aes_decrypt(enc_data, 'abcdefghijklnosp');
+
+-- Test function with same key for encrypt and decrypt
+select aes_encrypt('Kawish Siddiqui', 'abcdefghijklnosp') enc_data, aes_decrypt(enc_data, 'abcdefghijklnosp1');
+-- Above SQL should throw an error 
+
+-- Check for error details if error occured.
+select * from svl_udf_log
