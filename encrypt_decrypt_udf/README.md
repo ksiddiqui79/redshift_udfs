@@ -1,4 +1,4 @@
-#Data Encryption in Redshift Using UDF
+# Data Encryption in Redshift Using UDF
 ## Redshift UDF Support
 Amazon Redshift supports User Defined scaler Fuction using SQL or Python.
 
@@ -6,7 +6,7 @@ Amazon Redshift supports User Defined scaler Fuction using SQL or Python.
 This function uses `pyaes` module to encrypt data using AES `encrypt` and `decrypt` functions.
 
 
-#Deployment 
+# Deployment 
 ## Create library
 ```SQL
 CREATE OR REPLACE LIBRARY pyaes 
