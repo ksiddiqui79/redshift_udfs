@@ -67,7 +67,21 @@ enc_data | aes_decrypt
 SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey||'x')
 FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 ```
- **Above SQL should throw an error**
+ **Above SQL should throw an error similar to :**
+
+```
+[Amazon](500310) Invalid operation: ValueError: Invalid key size. Please look at svl_udf_log for more information
+Details: 
+ -----------------------------------------------
+  error:  ValueError: Invalid key size. Please look at svl_udf_log for more information
+  code:      10000
+  context:   UDF
+  query:     0
+  location:  udf_client.cpp:369
+  process:   padbmaster [pid=91425]
+  -----------------------------------------------;
+1 statement failed.
+```
 
 ### Check for error details if error occured
 ```SQL
