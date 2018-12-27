@@ -18,7 +18,7 @@ FROM 'https://github.com/ksiddiqui79/redshift_udfs/blob/master/encrypt_decrypt_u
 
 ## Create encrypt function
 ```SQL
-CREATE OR REPLACE FUNCTION aes_encrypt(input VARCHAR(max), vKey VARCHAR(max)) 
+CREATE OR REPLACE FUNCTION aes_encrypt(input VARCHAR(max), vKey VARCHAR(256)) 
 RETURNS VARCHAR STABLE AS $$
   import pyaes 
   import binascii
@@ -36,7 +36,7 @@ $$ LANGUAGE plpythonu ;
 
 ## Create decrypt function
 ```SQL
-CREATE OR REPLACE FUNCTION aes_decrypt(encrypted_msg varchar(max), vKey VARCHAR(max))
+CREATE OR REPLACE FUNCTION aes_decrypt(encrypted_msg varchar(max), vKey VARCHAR(256))
 RETURNS VARCHAR STABLE AS $$
   import pyaes
   import binascii
