@@ -12,7 +12,7 @@ This function uses `pyaes` module to encrypt data using AES `encrypt` and `decry
 ```SQL
 CREATE OR REPLACE LIBRARY pyaes 
 LANGUAGE plpythonu 
-FROM 'https://github.com/ksiddiqui79/redshift_udfs/blob/master/encrypt_decrypt_udf/pyaes.zip?raw=true' 
+FROM 'https://github.com/ksiddiqui79/redshift_udfs/blob/master/encrypt_decrypt_udf/using_pyaes/pyaes.zip?raw=true' 
 ;
 ```
 
