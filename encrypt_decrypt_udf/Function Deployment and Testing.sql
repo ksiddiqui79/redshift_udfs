@@ -36,11 +36,13 @@ RETURNS VARCHAR STABLE AS $$
 $$ LANGUAGE plpythonu ;
 
 -- Test function with same key for encrypt and decrypt
-select aes_encrypt('Kawish Siddiqui', 'abcdefghijklnosp') enc_data, aes_decrypt(enc_data, 'abcdefghijklnosp');
+SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey)
+FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 
 -- Test function with same key for encrypt and decrypt
-select aes_encrypt('Kawish Siddiqui', 'abcdefghijklnosp') enc_data, aes_decrypt(enc_data, 'abcdefghijklnosp1');
+SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey||'x')
+FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 -- Above SQL should throw an error 
 
 -- Check for error details if error occured.
-select * from svl_udf_log
+SELECT * FROM svl_udf_log;

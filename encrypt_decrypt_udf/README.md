@@ -4,6 +4,7 @@ Amazon Redshift supports User Defined scaler Fuction using SQL or Python.
 
 ## Encryption and Decryption UDF
 This function uses `pyaes` module to encrypt data using AES `encrypt` and `decrypt` functions.
+**AED encryption needs atleast 16 character key to encrypt data, key length less than 16 characters may throw error.**
 
 
 # Deployment 
@@ -50,14 +51,14 @@ $$ LANGUAGE plpythonu ;
 ```
 ## Test function with same key for encrypt and decrypt
 ```SQL
-SELECT aes_encrypt(myVal, myVal) enc_data, aes_decrypt(enc_data, myVal)
-FROM (SELECT 'Kawish Siddiqui' myVal) a;
+SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey)
+FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 ```
 
 ## Test function with same key for encrypt and decrypt
 ```SQL
-SELECT aes_encrypt(myVal, myVal) enc_data, aes_decrypt(enc_data, myVal||'111')
-FROM (SELECT 'Kawish Siddiqui' myVal) a;
+SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey||'x')
+FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 ```
  **Above SQL should throw an error**
 
