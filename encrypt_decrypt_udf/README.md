@@ -63,5 +63,5 @@ FROM (SELECT 'Kawish Siddiqui' myVal) a;
 
 ### Check for error details if error occured
 ```SQL
-select * from svl_udf_log;
+SELECT * FROM svl_udf_log;
 ```
