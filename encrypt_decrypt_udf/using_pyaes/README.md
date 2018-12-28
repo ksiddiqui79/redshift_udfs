@@ -1,5 +1,5 @@
-# Data Encryption in Redshift Using UDF
-## Redshift UDF Support
+# Encryption &amp; Decryption UDF in Amazon Redshift
+## Amazon Redshift UDF Support
 Amazon Redshift supports User Defined scaler Fuction using SQL or Python.
 
 ## Encryption and Decryption UDF
