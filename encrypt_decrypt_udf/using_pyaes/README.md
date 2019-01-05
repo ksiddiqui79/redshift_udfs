@@ -1,6 +1,6 @@
 # Encryption &amp; Decryption UDF in Amazon Redshift
 ## Amazon Redshift UDF Support
-Amazon Redshift supports User Defined Fuction [https://docs.aws.amazon.com/redshift/latest/dg/user-defined-functions.html] using SQL or Python.
+Amazon Redshift supports [User Defined Fuction](https://docs.aws.amazon.com/redshift/latest/dg/user-defined-functions.html) using SQL or Python.
 
 ## Encryption and Decryption UDF
 This function uses `pyaes` module to encrypt data using AES `encrypt` and `decrypt` functions.
