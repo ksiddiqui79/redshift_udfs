@@ -31,7 +31,8 @@ RETURNS VARCHAR STABLE AS $$
 
   return str(cipher_txt2.decode('utf-8'))
 
-$$ LANGUAGE plpythonu ;
+$$ LANGUAGE plpythonu
+;
 ```
 
 ## Create decrypt function
