@@ -28,9 +28,7 @@ RETURNS VARCHAR STABLE AS $$
   aes=pyaes.AESModeOfOperationCTR(key)
   cipher_txt=aes.encrypt(input)
   cipher_txt2=binascii.hexlify(cipher_txt)
-
   return str(cipher_txt2.decode('utf-8'))
-
 $$ LANGUAGE plpythonu
 ;
 ```
