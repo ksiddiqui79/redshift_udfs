@@ -49,12 +49,15 @@ RETURNS VARCHAR STABLE AS $$
   return str(decrypted_msg2.decode('utf-8'))
 $$ LANGUAGE plpythonu ;
 ```
+
 ## Test function with same key for encrypt and decrypt
 **SQL**
+
 ```SQL
 SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey)
 FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 ```
+
 **Result**
 
 enc_data | aes_decrypt
@@ -63,16 +66,19 @@ enc_data | aes_decrypt
 
 
 ## Test function with same key for encrypt but different key to decrypt
+
 ```SQL
 SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey||'x')
 FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 ```
+
  **Above SQL should throw an error similar to :**
+ 
 
 ```
 [Amazon](500310) Invalid operation: ValueError: Invalid key size. Please look at svl_udf_log for more information
 Details: 
- -----------------------------------------------
+ -----------------------------------------------;
   error:  ValueError: Invalid key size. Please look at svl_udf_log for more information
   code:      10000
   context:   UDF
@@ -84,6 +90,7 @@ Details:
 ```
 
 ### Check for error details if error occured
+
 ```SQL
 SELECT * FROM svl_udf_log;
 ```
