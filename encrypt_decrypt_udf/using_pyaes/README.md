@@ -49,11 +49,13 @@ $$ LANGUAGE plpythonu ;
 SELECT aes_encrypt(myVal, myKey) enc_data, aes_decrypt(enc_data, myKey)
 FROM (SELECT 'Kawish Siddiqui' myVal, LPAD(myVal, 16, 'z') myKey) a;
 ```
+
 **Result**
 
 enc_data | aes_decrypt
 -------- | ------------
 9a861c3fc1007a9b50f16ef7e1927d | Kawish Siddiqui
+
 
 ## Test function with same key for encrypt but different key to decrypt
 ```SQL
